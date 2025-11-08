@@ -2,6 +2,8 @@
 #include "CObj.h"
 #include "Define.h"
 
+class CItem;
+
 class CPlayer : public CObj
 {
 public:
@@ -12,9 +14,15 @@ public:
     void Update();
     void Release();
 public:
-    void Attack();
-    void ShowStatus();
-    PLAYERSTATUS* Get_Status() {return m_pStatus;}
+    void Attack() override;
+    void ShowStatus() override;
+    void Drink_HP_Potion();
+    void Drink_MP_Potion();
+    void Buy_Potion();
+    void Sleep();
+    PLAYERSTATUS* Get_Status() override {return m_pStatus;}
 protected:
     PLAYERSTATUS* m_pStatus;
+    CItem* m_pInven;
+    CItem* m_pPotion;
 };

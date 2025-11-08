@@ -4,8 +4,8 @@
 #include "CObj/CPlayer.h"
 
 CPotion::CPotion()
+: m_pPotion(nullptr)
 {
-    m_pPotion = nullptr;
 }
 
 CPotion::~CPotion()
@@ -14,6 +14,13 @@ CPotion::~CPotion()
 
 void CPotion::Initialize()
 {
+    m_pPotion = new POTION[2]();
+    
+    m_pPotion[HP].iHeal = 50;
+    m_pPotion[HP].iGold = 50;
+
+    m_pPotion[MP].iHeal = 30;
+    m_pPotion[MP].iGold =50;
 }
 
 void CPotion::Update()
@@ -22,20 +29,4 @@ void CPotion::Update()
 
 void CPotion::Release()
 {
-}
-
-void CPotion::Buy()
-{
-    if (m_pPlayer->Get_Status()->iGold > m_pPotion->iGold)
-    {
-        m_pPlayer->Get_Status()->iGold -= m_pPotion->iGold;
-        m_pPotion->iCount++;
-        cout << "포션 구입완료" << endl;
-        pause();
-    }
-    
-    else
-    {
-        cout << "골드가 부족합니다" << endl;
-    }
 }

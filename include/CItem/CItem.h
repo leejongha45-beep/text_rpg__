@@ -9,12 +9,8 @@ public:
     CItem();
     virtual ~CItem();
 public:
-    virtual void Initialize() = 0;
+    void Initialize();
     void Update();
     void Release();
-    virtual POTION* Get_Potion() {return nullptr;}
-    void Set_Player(CObj* pPlayer) {m_pPlayer = pPlayer;}
 protected:
-    CObj* m_pPlayer;
-    ITEMTABLE* m_pItem;
 };

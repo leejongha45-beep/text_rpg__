@@ -17,17 +17,25 @@ typedef struct table
     int iMTP;
 }PLAYERSTATUS;
 
-enum LOCATIONTYPE {HOME = 1, SQARE, MARKET, DUNGEON_ENTRANCE,  END};
+enum VILLAGETYPE {MY_HOUSE = 1, ESQARE, ESHOP, VEND};
+enum DUNGEONTYPE {LOW = 0, MIDDLE, HIGH, DEND};
 
 typedef struct item
 {
+    int iHeal;
+    int iGold;
+}POTION;
+
+enum POTIONTYPE {HP = 0, MP, PEND};
+
+typedef struct table_
+{
     int iHP_Potion;
     int iMP_Potion;
-}ITEMTABLE;
+}INVENTORY;
 
-typedef struct potion
+typedef struct boxtable
 {
-    int iCount;
-    int iGold;
-    int iHeal;
-}POTION;
+    int iHP_Potion;
+    int iMP_Potion;
+}BOX;

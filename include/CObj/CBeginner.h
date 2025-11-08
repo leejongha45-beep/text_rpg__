@@ -10,6 +10,4 @@ public:
     void Initialize();
     void Update();
     void Release();
-public:
-    void Attack();
 };

@@ -3,20 +3,12 @@
 #include "CMainGame.h"
 #include "CObj/CObj.h"
 #include "CObj/CBeginner.h"
-#include "CPlace/CHome.h"
-#include "CPlace/CMarket.h"
-#include "CPlace/CSquare.h"
-#include "CItem/CHP_Potion.h"
-#include "CItem/CMP_Potion.h"
+#include "CPlace/CVillage.h"
+#include "CItem/CInven.h"
 
 CMainGame::CMainGame()
+: m_pPlayer(nullptr), m_pVillage(nullptr), m_pInven(nullptr)
 {
-    m_pPlayer = nullptr;
-    m_pHome = nullptr;
-    m_pMarket = nullptr;
-    m_pSquare = nullptr;
-    m_pHP_Potion = nullptr;
-    m_pMP_Potion = nullptr;
 }
 
 CMainGame::~CMainGame()
@@ -38,6 +30,7 @@ void CMainGame::Initialize()
             case 1:
             {
                 NewGame();
+                Update();
             }
             break;
 
@@ -67,6 +60,15 @@ void CMainGame::Initialize()
 
 void CMainGame::Update()
 {
+    int iLocaion(1);
+
+    while (true)
+    {
+        if (iLocaion == 1)
+        {
+            iLocaion = dynamic_cast<CVillage*>(m_pVillage)->MyHouse();
+        }
+    }
 }
 
 void CMainGame::Release()
@@ -75,51 +77,15 @@ void CMainGame::Release()
 
 void CMainGame::NewGame()
 {
-    m_pHome = new CHome;
-    m_pMarket = new CMarket;
-    m_pSquare = new CSqaure;
-
     m_pPlayer = new CBeginner;
-    m_pPlayer->Initialize();
+    dynamic_cast<CBeginner*>(m_pPlayer)->Initialize();
 
-    m_pHP_Potion = new CHP_Potion;
-    m_pMP_Potion = new CMP_Potion;
-    m_pHP_Potion->Initialize();
-    m_pMP_Potion->Initialize();
+    m_pInven = new CInven;
+    dynamic_cast<CInven*>(m_pInven)->Initialize();
 
-    m_pHome->Set_Player(m_pPlayer);
-    m_pHome->Set_HP_Potion(m_pHP_Potion);
-    m_pHome->Set_MP_Potion(m_pMP_Potion);
-
-    m_pMarket->Set_Player(m_pPlayer);
-    m_pMarket->Set_HP_Potion(m_pHP_Potion);
-    m_pMarket->Set_MP_Potion(m_pMP_Potion);
-
-    m_pSquare->Set_Player(m_pPlayer);
-    m_pSquare->Set_HP_Potion(m_pHP_Potion);
-    m_pSquare->Set_MP_Potion(m_pMP_Potion);
-
-    m_pHP_Potion->Set_Player(m_pPlayer);
-    m_pMP_Potion->Set_Player(m_pPlayer);
-
-    int iLocation(1);
-
-    while (true)
-    {
-        if (iLocation == HOME)
-        {
-            iLocation = m_pHome->Update();
-        }
-    
-        else if (iLocation == SQARE)
-        {
-            iLocation = m_pSquare->Update();
-        }
-    
-        else if (iLocation == MARKET)
-        {
-            iLocation = m_pMarket->Update();
-        }
-    }
+    m_pVillage = new CVillage;
+    m_pVillage->Set_Player(m_pPlayer);
+    m_pVillage->Set_Inven(m_pInven);
+    dynamic_cast<CVillage*>(m_pVillage)->Initialize();
 
 }

@@ -4,8 +4,6 @@
 
 CItem::CItem()
 {
-    m_pPlayer = nullptr;
-    m_pItem = nullptr;
 }
 
 CItem::~CItem()

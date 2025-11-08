@@ -17,9 +17,6 @@ public:
     void NewGame();
 private:
     CObj* m_pPlayer;
-    CPlace* m_pHome;
-    CPlace* m_pMarket;
-    CPlace* m_pSquare;
-    CItem* m_pHP_Potion;
-    CItem* m_pMP_Potion;
+    CPlace* m_pVillage;
+    CItem* m_pInven;
 };

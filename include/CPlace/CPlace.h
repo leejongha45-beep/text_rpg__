@@ -7,17 +7,17 @@ class CPlace
 {
 public:
     CPlace();
-    ~CPlace();
+    virtual ~CPlace();
 public:
-    virtual void Initialize() = 0;
-    virtual int Update() = 0;
-    virtual void Release() = 0;
+    void Initialize();
+    void Update();
+    void Release();
 public:
-    void Set_Player(CObj* pPlayer) {m_pPlayer = pPlayer;}
-    void Set_HP_Potion(CItem* pItem) {m_pHP_Potion = pItem;}
-    void Set_MP_Potion(CItem* pItem) {m_pMP_Potion = pItem;}
+    virtual void Set_Player(CObj* pPlayer) = 0;
+    virtual void Set_Inven(CItem* pInven) = 0;
 protected:
+    CPlace* m_pVillage;
+    CPlace* m_pDungeon;
     CObj* m_pPlayer;
-    CItem* m_pHP_Potion;
-    CItem* m_pMP_Potion;
+    CItem* m_pInven;
 };

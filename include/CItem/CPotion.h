@@ -8,11 +8,9 @@ public:
     CPotion();
     ~CPotion();
 public:
-    void Initialize() = 0;
+    void Initialize();
     void Update();
     void Release();
-    POTION* Get_Potion() {return m_pPotion;}
-    void Buy();
-protected:
+private:
     POTION* m_pPotion;
 };

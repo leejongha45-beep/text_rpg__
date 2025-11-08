@@ -10,4 +10,8 @@ public:
     void Initialize();
     void Update();
     void Release();
+public:
+    INVENTORY* Get_Inven() {return m_pInven;}
+private:
+    INVENTORY* m_pInven;
 };

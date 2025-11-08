@@ -4,6 +4,7 @@
 
 CInven::CInven()
 {
+    m_pInven = nullptr;
 }
 
 CInven::~CInven()
@@ -12,6 +13,7 @@ CInven::~CInven()
 
 void CInven::Initialize()
 {
+    m_pInven = new INVENTORY();
 }
 
 void CInven::Update()

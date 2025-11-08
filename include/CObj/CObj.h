@@ -5,11 +5,11 @@ class CObj
 {
 public:
     CObj();
-    ~CObj();
+    virtual ~CObj();
 public:
-    virtual void Initialize() = 0;
-    virtual void Update() = 0;
-    virtual void Release() = 0;
+    void Initialize();
+    void Update();
+    void Release();
 public:
     virtual void Attack() = 0;
     virtual void ShowStatus() = 0;
