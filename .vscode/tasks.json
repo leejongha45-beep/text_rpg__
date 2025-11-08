@@ -1,0 +1,40 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "CPP: Build Project (Final)", // 💡 디버그가 호출할 최종 빌드 작업
+            "type": "shell",
+            "command": "/usr/bin/clang++", // C++ 컴파일러 사용
+            "args": [
+                "-std=c++17",
+                "-g",
+                "-fcolor-diagnostics",
+                "-fansi-escape-codes",
+                // "-fsanitize=address",
+                // "-fno-omit-frame-pointer",
+                
+                // 💡 헤더 파일 검색 경로 설정 (pch.h와 다른 헤더 파일 찾기)
+                "-I", 
+                "${workspaceFolder}/include",
+                "-I", 
+                "${workspaceFolder}",
+                
+                // 💡 프로젝트 내 모든 .cpp 파일 포함
+                "${workspaceFolder}/**/*.cpp",
+                
+                "-o",
+                "${workspaceFolder}/exec_file" // 최종 실행 파일 이름
+            ],
+            "options": {
+                "cwd": "${workspaceFolder}"
+            },
+            "problemMatcher": [
+                "$gcc"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true // F5를 누르거나 Ctrl+Shift+B를 누를 때 이 작업이 실행됩니다.
+            }
+        }
+    ]
+}

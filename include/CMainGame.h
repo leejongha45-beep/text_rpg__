@@ -19,4 +19,5 @@ private:
     CObj* m_pPlayer;
     CPlace* m_pVillage;
     CItem* m_pInven;
+    CItem* m_pPotion;
 };

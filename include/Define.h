@@ -17,7 +17,7 @@ typedef struct table
     int iMTP;
 }PLAYERSTATUS;
 
-enum VILLAGETYPE {MY_HOUSE = 1, ESQARE, ESHOP, VEND};
+enum VILLAGETYPE {MY_HOUSE = 1, ESQARE, EMARKET, EDUNGEON, VEND};
 enum DUNGEONTYPE {LOW = 0, MIDDLE, HIGH, DEND};
 
 typedef struct item
